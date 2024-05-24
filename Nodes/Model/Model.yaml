@@ -1,0 +1,5 @@
+Name: Model
+Type: ModelCategoryFolder
+Children:
+- File: TypeDeffs/TypeDeffs.yaml
+- File: rac_ETHIPSamples/rac_ETHIPSamples.yaml

@@ -1,0 +1,413 @@
+Name: raC_ETHIPMessaging
+Type: FolderType
+Description: {"LocaleId":"en-US","Text":"Containes all types used to connect to any ETHIP Device and read/write CIP Parameter and execute cusom services."}
+Children:
+- File: raC_ETHIPCoreTypes/raC_ETHIPCoreTypes.yaml
+- File: raC_ETHIPTagTypes/raC_ETHIPTagTypes.yaml
+- Name: raC_ETHIPDevice
+  Id: g=b298c3cbd57d4b4a56356df3eb129e3a
+  Supertype: BaseObjectType
+  Description: {"LocaleId":"en-US","Text":"An object replesenting the connection to an ETHIP Device. Put all Groups and Tags below this object to enable CIP Services."}
+  Children:
+  - Name: Path
+    Type: BaseDataVariableType
+    DataType: String
+    Description: {"LocaleId":"en-US","Text":"The destination of the device to comunicate to. May be IP Address or Name. Dont put any routing path here (its in another property). Use allways the first device to comunicate to, even if the destination is using a route!"}
+    Value: ""
+  - Name: raC_ETHIPDeviceLogic
+    Type: NetLogic
+    Children:
+    - Class: Method
+      Name: getIdentifyItem
+      Id: g=5d7215752c87db00e0d943b401849b96
+  - Name: Indentity
+    Type: BaseDataVariableType
+    DataType: String
+    Description: {"LocaleId":"en-US","Text":"The ETHIP Identity Object. Updated at runtime."}
+    Value: "0"
+    Children:
+    - Name: Minor
+      Type: BaseDataVariableType
+      DataType: Byte
+      Description: {"LocaleId":"en-US","Text":"Minor Version of the ETHIP Object."}
+      Value: 0
+    - Name: Major
+      Type: BaseDataVariableType
+      DataType: Byte
+      Description: {"LocaleId":"en-US","Text":"Major Version of the ETHIP Object."}
+      Value: 0
+    - Name: VendorID
+      Type: BaseDataVariableType
+      DataType: Int16
+      Description: {"LocaleId":"en-US","Text":"Vendor ID of the ETHIP Object."}
+      Value: 0
+    - Name: DeviceType
+      Type: BaseDataVariableType
+      DataType: Int16
+      Description: {"LocaleId":"en-US","Text":"Device Type of the ETHIP Object."}
+      Value: 0
+    - Name: ProductCode
+      Type: BaseDataVariableType
+      DataType: Int16
+      Description: {"LocaleId":"en-US","Text":"Description of the ETHIP Object."}
+      Value: 0
+    - Name: Status
+      Type: BaseDataVariableType
+      DataType: Int16
+      Description: {"LocaleId":"en-US","Text":"Status of the ETHIP Object. See Sub-Properties for individual info."}
+      Value: 0
+      Children:
+      - Name: Owned
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "({0}&(1<<0))!=0"
+          - Name: ns=3;Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: Configured
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "({0}&(1<<2))!=0"
+          - Name: ns=3;Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: ExtendedStatus
+        Type: BaseDataVariableType
+        DataType: Byte
+        Value: 0
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "({0}>>8)&15"
+          - Name: ns=3;Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "({0}&(1<<8))!=0"
+          - Name: ns=3;Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "({0}&(1<<9))!=0"
+          - Name: ns=3;Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "({0}&(1<<10))!=0"
+          - Name: ns=3;Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "({0}&(1<<11))!=0"
+          - Name: ns=3;Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+    - Name: Serial
+      Type: BaseDataVariableType
+      DataType: Int32
+      Description: {"LocaleId":"en-US","Text":"Serial Number of the ETHIP Object."}
+      Value: 0
+    - Name: Catalog
+      Type: BaseDataVariableType
+      DataType: String
+      Description: {"LocaleId":"en-US","Text":"Catalog Number of the ETHIP Object."}
+      Value: "0"
+    - Name: Route
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+  - Name: ConnectionStatus
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"True if device at least was delivering its Identity Object."}
+    Value: false
+  - Name: Route
+    Type: BaseDataVariableType
+    DataType: String
+    Description: {"LocaleId":"en-US","Text":"Specify the route to be used to the device starting from the device itself. E.g.: 1,3,2,192.168.1.210"}
+    Value: ""
+  - Name: LogStatistics
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"Enable to log some runtime statistics. Recomended to disable for production."}
+    Value: false
+  - Name: cfgRefreshIdentity
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+- Name: raC_ETHIPTagGroup
+  Id: g=1192ce4479aa826227be659d08c3bff8
+  Supertype: raC_ETHIPTagGroupCore
+  Description: {"LocaleId":"en-US","Text":"Group object to handle multiple ETHIP Tags. It allows to read and write multiple Tags manually or on a periodic task. The Tags can be placed in sub-objects for better organization. The TagGroup MUST be place inside an ETHIPDevice. All tags are processed one after the other."}
+  Children:
+  - Name: Sts_Running
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"The Group is executing its periodic task."}
+    Value: false
+  - Name: raC_ETHIPGroupLogic
+    Type: NetLogic
+    Children:
+    - Class: Method
+      Name: ReadOnce
+      Id: g=a7178ad26eaaa339cfcb345a8476cc1e
+    - Class: Method
+      Name: ReadOnceAsync
+      Id: g=cbe615e2def5d8026d78b49848fb0a15
+    - Class: Method
+      Name: WriteOnce
+      Id: g=58c83154188b3ebddb9f19b68c4b5fc3
+    - Class: Method
+      Name: WriteOnceAsync
+      Id: g=e130155fc39090535bdb460b7b477c59
+  - Name: CyclicReadEnabled
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"Enables the cyclic reading of the tag group. The cyclic task is not starting automatically."}
+    Value: false
+    Children:
+    - Name: AutoStart
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Description: {"LocaleId":"en-US","Text":"Set to true to enable the automatic start of the group."}
+      Value: false
+    - Name: RPI
+      Type: AnalogItemType
+      DataType: Int32
+      Description: {"LocaleId":"en-US","Text":"Requested update-interval in ms of the group."}
+      Value: 1000
+      Children:
+      - Name: EURange
+        Type: RangeType
+        DataType: Range
+        Children:
+        - Name: Low
+          Type: BaseVariableType
+          DataType: Double
+          ReferenceType: HasProperty
+          Value: 100.0
+        - Name: High
+          Type: BaseVariableType
+          DataType: Double
+          ReferenceType: HasProperty
+          Value: 60000.0
+      - Name: EngineeringUnits
+        Type: EUInformationType
+        DataType: EUInformation
+        Children:
+        - Name: UnitId
+          Type: BaseVariableType
+          DataType: Int32
+          ReferenceType: HasProperty
+          Value: 4403766
+        - Name: DisplayName
+          Type: BaseVariableType
+          DataType: LocalizedText
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+        - Name: Description
+          Type: BaseVariableType
+          DataType: LocalizedText
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+- Name: raC_ETHIPTagGroupInhibited
+  Id: g=279b632e8a8c470f0780c804d0a18201
+  Supertype: raC_ETHIPTagGroupCore
+  Description: {"LocaleId":"en-US","Text":"A Tag Group without any code. Used to be able to place tags without getting configuration errors."}
+  Children:
+  - Name: Sts_Running
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"The Group is executing its periodic task."}
+    Value: false
+  - Name: CyclicReadEnabled
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"Enables the cyclic reading of the tag group. The cyclic task is not starting automatically."}
+    Value: false
+    Children:
+    - Name: AutoStart
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Description: {"LocaleId":"en-US","Text":"Set to true to enable the automatic start of the group."}
+      Value: false
+    - Name: RPI
+      Type: AnalogItemType
+      DataType: Int32
+      Description: {"LocaleId":"en-US","Text":"Requested update-interval in ms of the group."}
+      Value: 1000
+      Children:
+      - Name: EURange
+        Type: RangeType
+        DataType: Range
+        Children:
+        - Name: Low
+          Type: BaseVariableType
+          DataType: Double
+          ReferenceType: HasProperty
+          Value: 100.0
+        - Name: High
+          Type: BaseVariableType
+          DataType: Double
+          ReferenceType: HasProperty
+          Value: 60000.0
+      - Name: EngineeringUnits
+        Type: EUInformationType
+        DataType: EUInformation
+        Children:
+        - Name: UnitId
+          Type: BaseVariableType
+          DataType: Int32
+          ReferenceType: HasProperty
+          Value: 4403766
+        - Name: DisplayName
+          Type: BaseVariableType
+          DataType: LocalizedText
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+        - Name: Description
+          Type: BaseVariableType
+          DataType: LocalizedText
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+- Name: EDSFileImporter_DesignTime
+  Type: NetLogic
+  Description: {"LocaleId":"en-US","Text":"Enables the import of all Class 3 Parameters from an EDS file. Note that not all vendors are providing this information."}
+  Children:
+  - Name: BehaviourStartPriority
+    Type: BehaviourStartPriorityVariableType
+    DataType: Byte
+    Value: 180
+  - Name: EDSFilePath
+    Type: BaseDataVariableType
+    DataType: AbsoluteResourceUri
+    Description: {"LocaleId":"en-US","Text":"Browse to the EDS file to import. To find the right one, you can use FTLinx, browse to the device and select properties. There you will find the EDS filename. EDF files are located in \"C:\\Users\\Public\\Documents\\Rockwell\\EDS\". Ignore the last 3 digits of the name."}
+    Value: "file:///C:/tmp/0001000C00F00A00.eds"
+  - Name: Destination
+    Type: Alias
+    DataType: NodeId
+    Description: {"LocaleId":"en-US","Text":"Alias to the Folder where the device should be created."}
+    Value: "/Objects/Optix_Sample_ETHIPComs/Model/rac_ETHIPSamples"
+    Children:
+    - Name: Kind
+      Type: PropertyType
+      DataType: NodeId
+      Value: "/Objects/Optix_Sample_ETHIPComs/Model/rac_ETHIPSamples"
+  - Class: Method
+    Name: importAsDeviceType

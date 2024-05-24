@@ -1,0 +1,1766 @@
+Name: rac_ETHIPSamples
+Id: g=4840ca81f19b328e909fb03ced64d6d8
+Type: FolderType
+Children:
+- File: CustomServices/CustomServices.yaml
+- Name: raC_ETHIPDirect
+  Type: raC_ETHIPDevice
+  Description: {"LocaleId":"en-US","Text":"This is an example connecting to a direct connected controller and get some information."}
+  Children:
+  - Name: Path
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "192.168.2.30"
+  - Name: raC_ETHIPDeviceLogic
+    Type: NetLogic
+    Children:
+    - Class: Reference
+      Target: g=5d7215752c87db00e0d943b401849b96
+      Direction: Forward
+  - Name: Indentity
+    Id: g=19ebd0f28e30c3ed684d651cd80f9d66
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "0"
+    Children:
+    - Name: Minor
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: Major
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: VendorID
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: DeviceType
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: ProductCode
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: Status
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+      Children:
+      - Name: Owned
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: Configured
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: ExtendedStatus
+        Type: BaseDataVariableType
+        DataType: Byte
+        Value: 0
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+    - Name: Serial
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Catalog
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+    - Name: Route
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+  - Name: ConnectionStatus
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: raC_ETHIPTagGroup1
+    Type: raC_ETHIPTagGroup
+    Children:
+    - Name: Sts_Running
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+    - Name: raC_ETHIPGroupLogic
+      Type: NetLogic
+      Children:
+      - Class: Reference
+        Target: g=a7178ad26eaaa339cfcb345a8476cc1e
+        Direction: Forward
+      - Class: Reference
+        Target: g=cbe615e2def5d8026d78b49848fb0a15
+        Direction: Forward
+      - Class: Reference
+        Target: g=58c83154188b3ebddb9f19b68c4b5fc3
+        Direction: Forward
+      - Class: Reference
+        Target: g=e130155fc39090535bdb460b7b477c59
+        Direction: Forward
+    - Name: CyclicReadEnabled
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: AutoStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+      - Name: RPI
+        Type: AnalogItemType
+        DataType: Int32
+        Value: 1000
+        Children:
+        - Name: EURange
+          Type: RangeType
+          DataType: Range
+          Children:
+          - Name: Low
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 100.0
+          - Name: High
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 60000.0
+        - Name: EngineeringUnits
+          Type: EUInformationType
+          DataType: EUInformation
+          Children:
+          - Name: UnitId
+            Type: BaseVariableType
+            DataType: Int32
+            ReferenceType: HasProperty
+            Value: 4403766
+          - Name: DisplayName
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+          - Name: Description
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+    - Name: CatalogAsString
+      Type: raC_ETHIPTagShortSTRING
+      Children:
+      - Name: CIPClass
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPInstance
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPAttribute
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 7
+      - Name: ParameterName
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        Value: {"LocaleId":"en-US","Text":"0"}
+      - Name: Unit
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "0"
+      - Name: raC_ETHIPTagLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=cc6d8809131fdef08d923c5b711b3f80
+          Direction: Forward
+        - Class: Reference
+          Target: g=4c239027a41b5786f2f7c8d1e2aebf4e
+          Direction: Forward
+      - Name: WriteOnChange
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: WriteOnStart
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+      - Name: CIPQuality
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: ReadOnStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: Value
+        Type: BaseDataVariableType
+        DataType: String
+        Value: ""
+    - Name: CPULoad
+      Type: raC_ETHIP_Sample_CLXTaskLoad
+      Children:
+      - Name: CIPClass
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 821
+      - Name: CIPInstance
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPAttribute
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: CIPService
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 89
+      - Name: raC_ETHIPCustomMessageLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=cffc6bca8ce42a1e6d751aec5b49379d
+          Direction: Forward
+      - Name: DataOut
+        Type: BaseDataVariableType
+        DataType: Byte
+        ValueRank: OneDimension
+        ArrayDimensions: [8]
+        Value: [0,0,0,0,0,0,0,0]
+      - Name: DataIn
+        Type: BaseDataVariableType
+        DataType: Byte
+        ValueRank: OneDimension
+        ArrayDimensions: [200]
+        Value: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      - Name: CLXTaskLoadParserLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=604f87b1fee7b9171cd6d14576f639f2
+          Direction: Forward
+      - Name: DataInChanged
+        Type: VariableChangedEventDispatcher
+        Children:
+        - Name: VariableNodePath
+          Type: BaseVariableType
+          DataType: NodePath
+          Value: "../DataIn"
+        - Name: VariableValueChangedEventHandler1
+          Type: EventHandler
+          Children:
+          - Name: ListenEventType
+            Type: PropertyType
+            DataType: NodeId
+            Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableValueChangedEvent"
+          - Name: MethodsToCall
+            Type: BaseObjectType
+            Children:
+            - Name: MethodContainer1
+              Type: BaseObjectType
+              Children:
+              - Name: ObjectPointer
+                Type: NodePointer
+                DataType: NodeId
+                Value: {"IdType":0,"Id":0,"Namespace":-1}
+                Children:
+                - Name: Kind
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/ObjectTypes/BaseObjectType"
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "../../../../../CLXTaskLoadParserLogic@NodeId"
+              - Name: Method
+                Type: BaseDataVariableType
+                DataType: String
+                Value: "DecodeData"
+          - Name: EventArguments
+            Type: VariableValueChangedEvent
+            Children:
+            - Name: VariableNodeId
+              Type: BaseVariableType
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: NewValue
+              Type: BaseVariableType
+              DataType: BaseDataType
+            - Name: OldValue
+              Type: BaseVariableType
+              DataType: BaseDataType
+            - Name: EventId
+              Type: PropertyType
+              DataType: ByteString
+              Value: ""
+            - Name: EventType
+              Type: PropertyType
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: SourceNode
+              Type: PropertyType
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: SourceName
+              Type: PropertyType
+              DataType: String
+              Value: ""
+            - Name: Time
+              Type: PropertyType
+              DataType: UtcTime
+              Value: "1601-01-01T00:00:00.0000000"
+            - Name: ReceiveTime
+              Type: PropertyType
+              DataType: UtcTime
+              Value: "1601-01-01T00:00:00.0000000"
+            - Name: Message
+              Type: PropertyType
+              DataType: LocalizedText
+              Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+            - Name: Severity
+              Type: PropertyType
+              DataType: UInt16
+              Value: 0
+      - Name: CtrlUse
+        Id: g=9bb4fc7eb02bd6c7c1171e8d0d75fcb6
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+        Children:
+        - Name: Unused
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: Motion
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: System
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: Fault
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: User
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+    - Name: CoreLoad
+      Type: raC_ETHIP_Sample_CLXCoreLoad
+      Children:
+      - Name: CIPClass
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 821
+      - Name: CIPInstance
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPAttribute
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: CIPService
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 88
+      - Name: raC_ETHIPCustomMessageLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=6c810b8ab46d3babc2d03b6112a97f1e
+          Direction: Forward
+        - Class: Reference
+          Target: g=a151cc43140dd49e03851b79bdb32f81
+          Direction: Forward
+      - Name: DataOut
+        Type: BaseDataVariableType
+        DataType: Byte
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: []
+      - Name: DataIn
+        Type: BaseDataVariableType
+        DataType: Byte
+        ValueRank: OneDimension
+        ArrayDimensions: [20]
+        Value: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      - Name: CLXCoreLoadParserLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=7adc4b2927cd7cbbdc0fdf6f66c97bd1
+          Direction: Forward
+      - Name: DataInChanged
+        Type: VariableChangedEventDispatcher
+        Children:
+        - Name: VariableNodePath
+          Type: BaseVariableType
+          DataType: NodePath
+          Value: "../DataIn"
+        - Name: VariableValueChangedEventHandler1
+          Type: EventHandler
+          Children:
+          - Name: ListenEventType
+            Type: PropertyType
+            DataType: NodeId
+            Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableValueChangedEvent"
+          - Name: MethodsToCall
+            Type: BaseObjectType
+            Children:
+            - Name: MethodContainer1
+              Type: BaseObjectType
+              Children:
+              - Name: ObjectPointer
+                Type: NodePointer
+                DataType: NodeId
+                Value: {"IdType":0,"Id":0,"Namespace":-1}
+                Children:
+                - Name: Kind
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/ObjectTypes/BaseObjectType"
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "../../../../../CLXCoreLoadParserLogic@NodeId"
+              - Name: Method
+                Type: BaseDataVariableType
+                DataType: String
+                Value: "DecodeData"
+          - Name: EventArguments
+            Type: VariableValueChangedEvent
+            Children:
+            - Name: VariableNodeId
+              Type: BaseVariableType
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: NewValue
+              Type: BaseVariableType
+              DataType: BaseDataType
+            - Name: OldValue
+              Type: BaseVariableType
+              DataType: BaseDataType
+            - Name: EventId
+              Type: PropertyType
+              DataType: ByteString
+              Value: ""
+            - Name: EventType
+              Type: PropertyType
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: SourceNode
+              Type: PropertyType
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: SourceName
+              Type: PropertyType
+              DataType: String
+              Value: ""
+            - Name: Time
+              Type: PropertyType
+              DataType: UtcTime
+              Value: "1601-01-01T00:00:00.0000000"
+            - Name: ReceiveTime
+              Type: PropertyType
+              DataType: UtcTime
+              Value: "1601-01-01T00:00:00.0000000"
+            - Name: Message
+              Type: PropertyType
+              DataType: LocalizedText
+              Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+            - Name: Severity
+              Type: PropertyType
+              DataType: UInt16
+              Value: 0
+      - Name: Core0
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+        Children:
+        - Name: Type
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: Percentage
+          Type: BaseDataVariableType
+          DataType: Percentage
+          Value: 0.0
+        - Name: TypeName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+          Children:
+          - Name: KeyValueConverter1
+            Type: ValueMapConverter
+            Children:
+            - Name: Source
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+              ReferenceType: HasSource
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "../../../Type"
+      - Name: Core1
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+        Children:
+        - Name: Type
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: Percentage
+          Type: BaseDataVariableType
+          DataType: Percentage
+          Value: 0.0
+        - Name: TypeName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+          Children:
+          - Name: KeyValueConverter1
+            Type: ValueMapConverter
+            Children:
+            - Name: Source
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+              ReferenceType: HasSource
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "../../../Type"
+      - Name: Core2
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+        Children:
+        - Name: Type
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: Percentage
+          Type: BaseDataVariableType
+          DataType: Percentage
+          Value: 0.0
+        - Name: TypeName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+          Children:
+          - Name: KeyValueConverter1
+            Type: ValueMapConverter
+            Children:
+            - Name: Source
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+              ReferenceType: HasSource
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "../../../Type"
+      - Name: Core3
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+        Children:
+        - Name: Type
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: Percentage
+          Type: BaseDataVariableType
+          DataType: Percentage
+          Value: 0.0
+        - Name: TypeName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+          Children:
+          - Name: KeyValueConverter1
+            Type: ValueMapConverter
+            Children:
+            - Name: Source
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+              ReferenceType: HasSource
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "../../../Type"
+  - Name: Route
+    Type: BaseDataVariableType
+    DataType: String
+    Value: ""
+  - Name: LogStatistics
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: cfgRefreshIdentity
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+- Name: raC_ETHIPRoute
+  Type: raC_ETHIPDevice
+  Description: {"LocaleId":"en-US","Text":"This sample show how to use the route property to access a device with needs routing. Note that the Path is set to the first device connected to FTOptix."}
+  Children:
+  - Name: Path
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "192.168.2.30"
+  - Name: raC_ETHIPDeviceLogic
+    Type: NetLogic
+    Children:
+    - Class: Reference
+      Target: g=5d7215752c87db00e0d943b401849b96
+      Direction: Forward
+  - Name: Indentity
+    Id: g=24bc49673b0811b043c30072e3e29a83
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "0"
+    Children:
+    - Name: Minor
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: Major
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: VendorID
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: DeviceType
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: ProductCode
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: Status
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+      Children:
+      - Name: Owned
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: Configured
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: ExtendedStatus
+        Type: BaseDataVariableType
+        DataType: Byte
+        Value: 0
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+    - Name: Serial
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Catalog
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+    - Name: Route
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+  - Name: ConnectionStatus
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: raC_ETHIPTagGroup2
+    Type: raC_ETHIPTagGroup
+    Children:
+    - Name: Sts_Running
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+    - Name: raC_ETHIPGroupLogic
+      Type: NetLogic
+      Children:
+      - Class: Reference
+        Target: g=a7178ad26eaaa339cfcb345a8476cc1e
+        Direction: Forward
+      - Class: Reference
+        Target: g=cbe615e2def5d8026d78b49848fb0a15
+        Direction: Forward
+      - Class: Reference
+        Target: g=58c83154188b3ebddb9f19b68c4b5fc3
+        Direction: Forward
+      - Class: Reference
+        Target: g=e130155fc39090535bdb460b7b477c59
+        Direction: Forward
+    - Name: CyclicReadEnabled
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: AutoStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+      - Name: RPI
+        Type: AnalogItemType
+        DataType: Int32
+        Value: 1000
+        Children:
+        - Name: EURange
+          Type: RangeType
+          DataType: Range
+          Children:
+          - Name: Low
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 100.0
+          - Name: High
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 60000.0
+        - Name: EngineeringUnits
+          Type: EUInformationType
+          DataType: EUInformation
+          Children:
+          - Name: UnitId
+            Type: BaseVariableType
+            DataType: Int32
+            ReferenceType: HasProperty
+            Value: 4403766
+          - Name: DisplayName
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+          - Name: Description
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+    - Name: CatalogAsString
+      Type: raC_ETHIPTagShortSTRING
+      Children:
+      - Name: CIPClass
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPInstance
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPAttribute
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 7
+      - Name: ParameterName
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        Value: {"LocaleId":"en-US","Text":"0"}
+      - Name: Unit
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "0"
+      - Name: raC_ETHIPTagLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=cc6d8809131fdef08d923c5b711b3f80
+          Direction: Forward
+        - Class: Reference
+          Target: g=4c239027a41b5786f2f7c8d1e2aebf4e
+          Direction: Forward
+      - Name: WriteOnChange
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: WriteOnStart
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+      - Name: CIPQuality
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: ReadOnStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: Value
+        Type: BaseDataVariableType
+        DataType: String
+        Value: ""
+  - Name: Route
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "1,3,2,192.168.1.10"
+  - Name: LogStatistics
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: cfgRefreshIdentity
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+- Name: RemoteDI
+  Type: raC_ETHIPDevice
+  Children:
+  - Name: Path
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "192.168.2.30"
+  - Name: raC_ETHIPDeviceLogic
+    Type: NetLogic
+    Children:
+    - Class: Reference
+      Target: g=5d7215752c87db00e0d943b401849b96
+      Direction: Forward
+  - Name: Indentity
+    Id: g=26499c094114a4f71a929a53baf97b8d
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "0"
+    Children:
+    - Name: Minor
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: Major
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: VendorID
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: DeviceType
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: ProductCode
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: Status
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+      Children:
+      - Name: Owned
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: Configured
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: ExtendedStatus
+        Type: BaseDataVariableType
+        DataType: Byte
+        Value: 0
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+    - Name: Serial
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Catalog
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+    - Name: Route
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+  - Name: ConnectionStatus
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: Route
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "1,3,2,192.168.1.60,1,1"
+  - Name: raC_ETHIPTagGroup3
+    Type: raC_ETHIPTagGroup
+    Children:
+    - Name: Sts_Running
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+    - Name: raC_ETHIPGroupLogic
+      Type: NetLogic
+      Children:
+      - Class: Reference
+        Target: g=a7178ad26eaaa339cfcb345a8476cc1e
+        Direction: Forward
+      - Class: Reference
+        Target: g=cbe615e2def5d8026d78b49848fb0a15
+        Direction: Forward
+      - Class: Reference
+        Target: g=58c83154188b3ebddb9f19b68c4b5fc3
+        Direction: Forward
+      - Class: Reference
+        Target: g=e130155fc39090535bdb460b7b477c59
+        Direction: Forward
+    - Name: CyclicReadEnabled
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: AutoStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+      - Name: RPI
+        Type: AnalogItemType
+        DataType: Int32
+        Value: 1000
+        Children:
+        - Name: EURange
+          Type: RangeType
+          DataType: Range
+          Children:
+          - Name: Low
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 100.0
+          - Name: High
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 60000.0
+        - Name: EngineeringUnits
+          Type: EUInformationType
+          DataType: EUInformation
+          Children:
+          - Name: UnitId
+            Type: BaseVariableType
+            DataType: Int32
+            ReferenceType: HasProperty
+            Value: 4403766
+          - Name: DisplayName
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+          - Name: Description
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+    - Name: Inputs
+      Type: BaseObjectType
+      Children:
+      - Name: DI0
+        Type: raC_ETHIPTagBOOL
+        Children:
+        - Name: CIPClass
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 8
+        - Name: CIPInstance
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 1
+        - Name: CIPAttribute
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 3
+        - Name: ParameterName
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+          Value: {"LocaleId":"en-US","Text":"0"}
+        - Name: Unit
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+        - Name: raC_ETHIPTagLogic
+          Type: NetLogic
+          Children:
+          - Class: Reference
+            Target: g=cc6d8809131fdef08d923c5b711b3f80
+            Direction: Forward
+          - Class: Reference
+            Target: g=4c239027a41b5786f2f7c8d1e2aebf4e
+            Direction: Forward
+        - Name: WriteOnChange
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+          Children:
+          - Name: WriteOnStart
+            Type: BaseDataVariableType
+            DataType: Boolean
+            Value: false
+        - Name: CIPQuality
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: ReadOnStart
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+        - Name: Value
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+      - Name: DI1
+        Type: raC_ETHIPTagBOOL
+        Children:
+        - Name: CIPClass
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 8
+        - Name: CIPInstance
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 2
+        - Name: CIPAttribute
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 3
+        - Name: ParameterName
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+          Value: {"LocaleId":"en-US","Text":"0"}
+        - Name: Unit
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+        - Name: raC_ETHIPTagLogic
+          Type: NetLogic
+          Children:
+          - Class: Reference
+            Target: g=cc6d8809131fdef08d923c5b711b3f80
+            Direction: Forward
+          - Class: Reference
+            Target: g=4c239027a41b5786f2f7c8d1e2aebf4e
+            Direction: Forward
+        - Name: WriteOnChange
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+          Children:
+          - Name: WriteOnStart
+            Type: BaseDataVariableType
+            DataType: Boolean
+            Value: false
+        - Name: CIPQuality
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+        - Name: ReadOnStart
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+        - Name: Value
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+  - Name: LogStatistics
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: cfgRefreshIdentity
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+- Name: RemoteAI
+  Type: raC_ETHIPDevice
+  Children:
+  - Name: Path
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "192.168.2.30"
+  - Name: raC_ETHIPDeviceLogic
+    Type: NetLogic
+    Children:
+    - Class: Reference
+      Target: g=5d7215752c87db00e0d943b401849b96
+      Direction: Forward
+  - Name: Indentity
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "0"
+    Children:
+    - Name: Minor
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: Major
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 0
+    - Name: VendorID
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: DeviceType
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: ProductCode
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+    - Name: Status
+      Type: BaseDataVariableType
+      DataType: Int16
+      Value: 0
+      Children:
+      - Name: Owned
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: Configured
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: ExtendedStatus
+        Type: BaseDataVariableType
+        DataType: Byte
+        Value: 0
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MinorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorRecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+      - Name: MajorUnrecoverableFault
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Source0
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../..@Value"
+    - Name: Serial
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Catalog
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+    - Name: Route
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+  - Name: ConnectionStatus
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: Route
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "1,3,2,192.168.1.60,1,3"
+  - Name: raC_ETHIPTagGroup4
+    Type: raC_ETHIPTagGroup
+    Children:
+    - Name: Sts_Running
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+    - Name: raC_ETHIPGroupLogic
+      Type: NetLogic
+      Children:
+      - Class: Reference
+        Target: g=a7178ad26eaaa339cfcb345a8476cc1e
+        Direction: Forward
+      - Class: Reference
+        Target: g=cbe615e2def5d8026d78b49848fb0a15
+        Direction: Forward
+      - Class: Reference
+        Target: g=58c83154188b3ebddb9f19b68c4b5fc3
+        Direction: Forward
+      - Class: Reference
+        Target: g=e130155fc39090535bdb460b7b477c59
+        Direction: Forward
+    - Name: CyclicReadEnabled
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: AutoStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+      - Name: RPI
+        Type: AnalogItemType
+        DataType: Int32
+        Value: 1000
+        Children:
+        - Name: EURange
+          Type: RangeType
+          DataType: Range
+          Children:
+          - Name: Low
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 100.0
+          - Name: High
+            Type: BaseVariableType
+            DataType: Double
+            ReferenceType: HasProperty
+            Value: 60000.0
+        - Name: EngineeringUnits
+          Type: EUInformationType
+          DataType: EUInformation
+          Children:
+          - Name: UnitId
+            Type: BaseVariableType
+            DataType: Int32
+            ReferenceType: HasProperty
+            Value: 4403766
+          - Name: DisplayName
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+          - Name: Description
+            Type: BaseVariableType
+            DataType: LocalizedText
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+    - Name: AI0_Value
+      Type: raC_ETHIPTagINT
+      Children:
+      - Name: CIPClass
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 10
+      - Name: CIPInstance
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPAttribute
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 3
+      - Name: ParameterName
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        Value: {"LocaleId":"en-US","Text":"0"}
+      - Name: Unit
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "0"
+      - Name: raC_ETHIPTagLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=cc6d8809131fdef08d923c5b711b3f80
+          Direction: Forward
+        - Class: Reference
+          Target: g=4c239027a41b5786f2f7c8d1e2aebf4e
+          Direction: Forward
+      - Name: WriteOnChange
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: WriteOnStart
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+      - Name: CIPQuality
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: ReadOnStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: Value
+        Type: BaseDataVariableType
+        DataType: Int16
+        Value: 0
+    - Name: AI0_Status
+      Type: raC_ETHIPTagBOOL
+      Children:
+      - Name: CIPClass
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 10
+      - Name: CIPInstance
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: CIPAttribute
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 4
+      - Name: ParameterName
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        Value: {"LocaleId":"en-US","Text":"0"}
+      - Name: Unit
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "0"
+      - Name: raC_ETHIPTagLogic
+        Type: NetLogic
+        Children:
+        - Class: Reference
+          Target: g=cc6d8809131fdef08d923c5b711b3f80
+          Direction: Forward
+        - Class: Reference
+          Target: g=4c239027a41b5786f2f7c8d1e2aebf4e
+          Direction: Forward
+      - Name: WriteOnChange
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: WriteOnStart
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+      - Name: CIPQuality
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: ReadOnStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: Value
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+  - Name: LogStatistics
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: cfgRefreshIdentity
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
