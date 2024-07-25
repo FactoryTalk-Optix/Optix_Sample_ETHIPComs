@@ -20,7 +20,6 @@ Children:
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: CIPService
     Type: BaseDataVariableType
     DataType: Int32
@@ -40,13 +39,11 @@ Children:
     DataType: Byte
     ValueRank: OneDimension
     ArrayDimensions: [8]
-    Value: [0,0,0,0,0,0,0,0]
   - Name: DataIn
     Type: BaseDataVariableType
     DataType: Byte
     ValueRank: OneDimension
     ArrayDimensions: [200]
-    Value: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
   - Name: CLXTaskLoadParserLogic
     Type: NetLogic
     Children:
@@ -76,7 +73,6 @@ Children:
           - Name: ns=3;ObjectPointer
             Type: NodePointer
             DataType: NodeId
-            Value: {"IdType":0,"Id":0,"Namespace":-1}
             Children:
             - Name: Kind
               Type: PropertyType
@@ -102,7 +98,6 @@ Children:
         - Name: VariableNodeId
           Type: BaseVariableType
           DataType: NodeId
-          Value: {"IdType":0,"Id":0,"Namespace":-1}
         - Name: NewValue
           Type: BaseVariableType
           DataType: BaseDataType
@@ -112,60 +107,63 @@ Children:
         - Name: EventId
           Type: PropertyType
           DataType: ByteString
-          Value: ""
         - Name: EventType
           Type: PropertyType
           DataType: NodeId
-          Value: {"IdType":0,"Id":0,"Namespace":-1}
         - Name: SourceNode
           Type: PropertyType
           DataType: NodeId
-          Value: {"IdType":0,"Id":0,"Namespace":-1}
         - Name: SourceName
           Type: PropertyType
           DataType: String
-          Value: ""
         - Name: Time
           Type: PropertyType
           DataType: UtcTime
-          Value: "1601-01-01T00:00:00.0000000"
         - Name: ReceiveTime
           Type: PropertyType
           DataType: UtcTime
-          Value: "1601-01-01T00:00:00.0000000"
         - Name: Message
           Type: PropertyType
           DataType: LocalizedText
-          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
         - Name: Severity
           Type: PropertyType
           DataType: UInt16
-          Value: 0
   - Name: CtrlUse
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 0
     Children:
     - Name: Unused
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: Motion
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: System
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: Fault
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: User
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
+  - Name: ns=9;LibraryReference
+    Type: ObjectLibraryReference
+    DataType: ObjectLibraryReferenceDataType
+    ModellingRule: None
+    Value: 
+     {
+      "TypeId": {
+       "Id": 72,
+       "Namespace": 9
+      },
+      "Body": {
+       "libraryGuid": "116c3cca6b201131f2fb6d5f3ac33ae4",
+       "objectGuid": "4c26e579a7f2d64b733a6f44fe3c7ec9",
+       "objectVersion": 1,
+       "highestIgnoredVersion": 0
+      }
+     }
 - Name: raC_ETHIP_Sample_CLXCoreLoad
   Id: g=2455973524cc43873001f45ef8a5d813
   Supertype: raC_ETHIPCustomMessageCore
@@ -185,7 +183,6 @@ Children:
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: CIPService
     Type: BaseDataVariableType
     DataType: Int32
@@ -205,13 +202,11 @@ Children:
     DataType: Byte
     ValueRank: OneDimension
     ArrayDimensions: [0]
-    Value: []
   - Name: DataIn
     Type: BaseDataVariableType
     DataType: Byte
     ValueRank: OneDimension
     ArrayDimensions: [20]
-    Value: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
   - Name: CLXCoreLoadParserLogic
     Type: NetLogic
     Children:
@@ -241,7 +236,6 @@ Children:
           - Name: ns=3;ObjectPointer
             Type: NodePointer
             DataType: NodeId
-            Value: {"IdType":0,"Id":0,"Namespace":-1}
             Children:
             - Name: Kind
               Type: PropertyType
@@ -267,7 +261,6 @@ Children:
         - Name: VariableNodeId
           Type: BaseVariableType
           DataType: NodeId
-          Value: {"IdType":0,"Id":0,"Namespace":-1}
         - Name: NewValue
           Type: BaseVariableType
           DataType: BaseDataType
@@ -277,48 +270,37 @@ Children:
         - Name: EventId
           Type: PropertyType
           DataType: ByteString
-          Value: ""
         - Name: EventType
           Type: PropertyType
           DataType: NodeId
-          Value: {"IdType":0,"Id":0,"Namespace":-1}
         - Name: SourceNode
           Type: PropertyType
           DataType: NodeId
-          Value: {"IdType":0,"Id":0,"Namespace":-1}
         - Name: SourceName
           Type: PropertyType
           DataType: String
-          Value: ""
         - Name: Time
           Type: PropertyType
           DataType: UtcTime
-          Value: "1601-01-01T00:00:00.0000000"
         - Name: ReceiveTime
           Type: PropertyType
           DataType: UtcTime
-          Value: "1601-01-01T00:00:00.0000000"
         - Name: Message
           Type: PropertyType
           DataType: LocalizedText
-          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
         - Name: Severity
           Type: PropertyType
           DataType: UInt16
-          Value: 0
   - Name: Core0
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 0
     Children:
     - Name: Type
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: Percentage
       Type: BaseDataVariableType
       DataType: Percentage
-      Value: 0.0
     - Name: TypeName
       Type: BaseDataVariableType
       DataType: String
@@ -336,7 +318,7 @@ Children:
             Type: DynamicLink
             DataType: NodePath
             Value: "../../../Type"
-        - Name: Pairs
+        - Name: ns=3;Pairs
           Type: BaseObjectType
           ModellingRule: None
           Children:
@@ -348,7 +330,6 @@ Children:
               Type: BaseDataVariableType
               DataType: UInt32
               ModellingRule: None
-              Value: 0
             - Name: Value
               Type: BaseDataVariableType
               DataType: LocalizedText
@@ -413,16 +394,13 @@ Children:
   - Name: Core1
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 0
     Children:
     - Name: Type
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: Percentage
       Type: BaseDataVariableType
       DataType: Percentage
-      Value: 0.0
     - Name: TypeName
       Type: BaseDataVariableType
       DataType: String
@@ -440,7 +418,7 @@ Children:
             Type: DynamicLink
             DataType: NodePath
             Value: "../../../Type"
-        - Name: Pairs
+        - Name: ns=3;Pairs
           Type: BaseObjectType
           Children:
           - Name: Pair
@@ -449,7 +427,6 @@ Children:
             - Name: Key
               Type: BaseDataVariableType
               DataType: UInt32
-              Value: 0
             - Name: Value
               Type: BaseDataVariableType
               DataType: LocalizedText
@@ -501,16 +478,13 @@ Children:
   - Name: Core2
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 0
     Children:
     - Name: Type
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: Percentage
       Type: BaseDataVariableType
       DataType: Percentage
-      Value: 0.0
     - Name: TypeName
       Type: BaseDataVariableType
       DataType: String
@@ -528,7 +502,7 @@ Children:
             Type: DynamicLink
             DataType: NodePath
             Value: "../../../Type"
-        - Name: Pairs
+        - Name: ns=3;Pairs
           Type: BaseObjectType
           Children:
           - Name: Pair
@@ -537,7 +511,6 @@ Children:
             - Name: Key
               Type: BaseDataVariableType
               DataType: UInt32
-              Value: 0
             - Name: Value
               Type: BaseDataVariableType
               DataType: LocalizedText
@@ -589,16 +562,13 @@ Children:
   - Name: Core3
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 0
     Children:
     - Name: Type
       Type: BaseDataVariableType
       DataType: Int32
-      Value: 0
     - Name: Percentage
       Type: BaseDataVariableType
       DataType: Percentage
-      Value: 0.0
     - Name: TypeName
       Type: BaseDataVariableType
       DataType: String
@@ -616,7 +586,7 @@ Children:
             Type: DynamicLink
             DataType: NodePath
             Value: "../../../Type"
-        - Name: Pairs
+        - Name: ns=3;Pairs
           Type: BaseObjectType
           Children:
           - Name: Pair
@@ -625,7 +595,6 @@ Children:
             - Name: Key
               Type: BaseDataVariableType
               DataType: UInt32
-              Value: 0
             - Name: Value
               Type: BaseDataVariableType
               DataType: LocalizedText
@@ -674,3 +643,20 @@ Children:
               Type: BaseDataVariableType
               DataType: LocalizedText
               Value: {"LocaleId":"en-US","Text":"safety"}
+  - Name: ns=9;LibraryReference
+    Type: ObjectLibraryReference
+    DataType: ObjectLibraryReferenceDataType
+    ModellingRule: None
+    Value: 
+     {
+      "TypeId": {
+       "Id": 72,
+       "Namespace": 9
+      },
+      "Body": {
+       "libraryGuid": "116c3cca6b201131f2fb6d5f3ac33ae4",
+       "objectGuid": "9fc16b7a771e6731e7a27e444ba66301",
+       "objectVersion": 1,
+       "highestIgnoredVersion": 0
+      }
+     }

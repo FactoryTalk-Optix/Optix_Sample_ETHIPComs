@@ -14,17 +14,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -48,23 +45,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagUDINT
   Id: g=b83cf7abf91ed30f912faaff23ec0cbf
   Supertype: raC_ETHIPTagCore
@@ -78,17 +71,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: UInt32
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -112,23 +102,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagINT
   Id: g=e576082671b13f691f5fe1ed8251e513
   Supertype: raC_ETHIPTagCore
@@ -142,17 +128,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: Int16
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -176,23 +159,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagUINT
   Id: g=66c55813613604fe1c87564094e61dd4
   Supertype: raC_ETHIPTagCore
@@ -206,17 +185,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: UInt16
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -240,23 +216,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagUINT_Arr
   Id: g=a5523b491e4faf898e860bc5901b15b9
   Supertype: raC_ETHIPTagCore
@@ -272,17 +244,14 @@ Children:
     DataType: UInt16
     ValueRank: OneDimension
     ArrayDimensions: [0]
-    Value: []
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -306,23 +275,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagSINT
   Id: g=5ba0c994d4d3f99209d55ecab23040b2
   Supertype: raC_ETHIPTagCore
@@ -336,17 +301,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: SByte
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -370,23 +332,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagUSINT
   Id: g=dda8faddf757fa6c9783f7c7162694a2
   Supertype: raC_ETHIPTagCore
@@ -400,17 +358,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: Byte
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -434,23 +389,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagREAL
   Id: g=4bbc550c716f85495c931230064ba840
   Supertype: raC_ETHIPTagCore
@@ -464,17 +415,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: Float
-    Value: 0.0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -498,23 +446,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagBOOL
   Id: g=f6c146dad4e183def9185c53f58f360e
   Supertype: raC_ETHIPTagCore
@@ -528,17 +472,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: Boolean
-    Value: false
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -562,23 +503,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagSTRING
   Id: g=b21d6eadc07d05262633ed21f98460d3
   Supertype: raC_ETHIPTagCore
@@ -592,17 +529,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: String
-    Value: ""
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -626,23 +560,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagShortSTRING
   Id: g=e02d2aa8756529b51577174c38ca5c03
   Supertype: raC_ETHIPTagCore
@@ -656,17 +586,14 @@ Children:
   - Name: Value
     Type: BaseDataVariableType
     DataType: String
-    Value: ""
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -690,23 +617,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPTagCustom
   Id: g=aa626ca070b6e92fda8275e2d74a90b7
   Supertype: raC_ETHIPTagCore
@@ -722,17 +645,14 @@ Children:
     DataType: Byte
     ValueRank: OneDimension
     ArrayDimensions: [0]
-    Value: []
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -756,20 +676,16 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false

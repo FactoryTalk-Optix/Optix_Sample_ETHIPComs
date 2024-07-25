@@ -1,21 +1,25 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.106
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optix_Sample_ETHIPComs", "Optix_Sample_ETHIPComs.csproj", "{EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}"
 EndProject
 Global
-    GlobalSection(SolutionConfigurationPlatforms) = preSolution
-        Debug|Any CPU = Debug|Any CPU
-        Release|Any CPU = Release|Any CPU
-    EndGlobalSection
-    GlobalSection(ProjectConfigurationPlatforms) = postSolution
-        {EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Release|Any CPU.Build.0 = Release|Any CPU
-    EndGlobalSection
-    GlobalSection(SolutionProperties) = preSolution
-        HideSolutionNode = FALSE
-    EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFBA5AD0-103D-BEF1-4A65-F011A6BD51F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7BA37E7-CB71-4590-9176-5384077B8B09}
+	EndGlobalSection
 EndGlobal

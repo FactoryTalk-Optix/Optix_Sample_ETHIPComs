@@ -1,34 +1,14 @@
 #region Using directives
 using System;
 using UAManagedCore;
-using OpcUa = UAManagedCore.OpcUa;
-using FTOptix.HMIProject;
-using FTOptix.Retentivity;
-using FTOptix.NativeUI;
 using FTOptix.NetLogic;
-using FTOptix.UI;
-using FTOptix.CoreBase;
-using FTOptix.Core;
 using RATC.ETHIP;
-using static RATC.ETHIP.Encapsulation;
-using System.Threading.Tasks;
 using System.IO;
 using System.Text;
-using FTOptix.Store;
-using FTOptix.ODBCStore;
-using FTOptix.SQLiteStore;
-using FTOptix.AuditSigning;
-using FTOptix.DataLogger;
-using FTOptix.System;
 using System.Timers;
-using FTOptix.OPCUAServer;
-using FTOptix.EventLogger;
-using FTOptix.RAEtherNetIP;
-using FTOptix.CommunicationDriver;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Net;
 #endregion
 
 public class raC_ETHIPDeviceLogic : BaseNetLogic
@@ -70,7 +50,7 @@ public class raC_ETHIPDeviceLogic : BaseNetLogic
         {
             _ethipClient.RoutePath = _RouteVariable.Value;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             //Log.Error("Invalid route '" + _RouteVariable.Value + "' of device " + Owner.BrowseName);
         }
@@ -309,6 +289,31 @@ public class raC_ETHIPDeviceLogic : BaseNetLogic
 
 namespace RATC.ETHIP
 {
+    //https://github.com/rossmann-engineering/EEIP.NET
+    //MIT License
+
+    //Copyright(c) 2020 Rossmann Engineering
+    // This is an customized version of the library.
+
+    //Permission is hereby granted, free of charge, to any person obtaining a copy
+    //of this software and associated documentation files (the "Software"), to deal
+    //in the Software without restriction, including without limitation the rights
+    //to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    //copies of the Software, and to permit persons to whom the Software is
+    //furnished to do so, subject to the following conditions:
+
+    //The above copyright notice and this permission notice shall be included in all
+    //copies or substantial portions of the Software.
+
+    //THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    //IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    //FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    //AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    //LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    //SOFTWARE.
+
+
     public class scatteredItem
     {
         public byte[] Attribute;
@@ -2511,11 +2516,14 @@ namespace RATC.ETHIP
             byte[] requestedPath = GetEPath(classID, instanceID, attributeID);
             if (_sessionHandle == 0)             //If a Session is not Registers, Try to Registers a Session with the predefined IP-Address and Port
                 this.RegisterSession();
-            byte[] dataToSend = new byte[42 + value.Length + requestedPath.Length];
+
             Encapsulation encapsulation = new Encapsulation();
             encapsulation.SessionHandle = _sessionHandle;
             encapsulation.Command = Encapsulation.CommandsEnum.SendRRData;
-            encapsulation.Length = (UInt16)(18 + value.Length + requestedPath.Length);
+            encapsulation.Length = _useRoute ? (UInt16)(requestedPath.Length + 18 + 12 + value.Length + _routebytes.Length) : (UInt16)(18 + value.Length + requestedPath.Length);
+            ////PadByte?
+            if (value.Length % 2 != 0)
+                encapsulation.Length += 1;
             //---------------Interface Handle CIP
             encapsulation.CommandSpecificData.Add(0);
             encapsulation.CommandSpecificData.Add(0);
@@ -2536,9 +2544,26 @@ namespace RATC.ETHIP
             commonPacketFormat.AddressLength = 0x0000;
 
             commonPacketFormat.DataItem = 0xB2;
-            commonPacketFormat.DataLength = (UInt16)(2 + value.Length + requestedPath.Length);
+            commonPacketFormat.DataLength = _useRoute ? (UInt16)(2 + value.Length + requestedPath.Length + 12 + _routebytes.Length) : (UInt16)(2 + value.Length + requestedPath.Length);
 
+            ////PadByte?
+            if (value.Length % 2 != 0)
+                commonPacketFormat.DataLength += 1;
 
+            if (_useRoute)
+            {
+                commonPacketFormat.Data.Add((byte)0x52); // Service: Connection Manager foreward
+                commonPacketFormat.Data.Add((byte)0x2); // Path length
+                commonPacketFormat.Data.Add((byte)0x20); // Path Segment1
+                commonPacketFormat.Data.Add((byte)0x06); // Path Segment1
+                commonPacketFormat.Data.Add((byte)0x24); // Path Segment2
+                commonPacketFormat.Data.Add((byte)0x01); // Path Segment2
+                                                         //Time Out
+                                                         //commonPacketFormat.Data.AddRange(BitConverter.GetBytes((UInt16)(10000)));
+                commonPacketFormat.Data.Add(0x06);
+                commonPacketFormat.Data.Add(0x9B);
+                commonPacketFormat.Data.AddRange(BitConverter.GetBytes((UInt16)(2 + value.Length + requestedPath.Length)));
+            }
 
             //----------------CIP Command "Set Attribute Single"
             commonPacketFormat.Data.Add((byte)CIPServices.Set_Attribute_Single);
@@ -2567,6 +2592,19 @@ namespace RATC.ETHIP
                 commonPacketFormat.Data.Add(value[i]);
             }
             //----------------Data
+            ////PadByte?
+            if (value.Length % 2 != 0)
+                commonPacketFormat.Data.Add((byte)0);
+
+            if (_useRoute)
+            {
+                commonPacketFormat.Data.Add((byte)(_routebytes.Length / 2));
+                commonPacketFormat.Data.Add((byte)0);
+
+                commonPacketFormat.Data.AddRange(_routebytes);
+            }
+
+
 
             byte[] dataToWrite = new byte[encapsulation.toBytes().Length + commonPacketFormat.toBytes().Length];
             System.Buffer.BlockCopy(encapsulation.toBytes(), 0, dataToWrite, 0, encapsulation.toBytes().Length);
@@ -2588,8 +2626,7 @@ namespace RATC.ETHIP
             }
             //--------------------------END Error?
 
-            byte[] returnData = new byte[bytes - 44];
-            System.Buffer.BlockCopy(data, 44, returnData, 0, bytes - 44);
+            byte[] returnData = new byte[0];
 
             return returnData;
         }

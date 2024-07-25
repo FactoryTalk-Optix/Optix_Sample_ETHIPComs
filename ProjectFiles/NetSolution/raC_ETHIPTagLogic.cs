@@ -1,24 +1,7 @@
 #region Using directives
 using System;
 using UAManagedCore;
-using OpcUa = UAManagedCore.OpcUa;
-using FTOptix.HMIProject;
-using FTOptix.Retentivity;
-using FTOptix.NativeUI;
 using FTOptix.NetLogic;
-using FTOptix.UI;
-using FTOptix.CoreBase;
-using FTOptix.Core;
-using FTOptix.Store;
-using FTOptix.ODBCStore;
-using FTOptix.SQLiteStore;
-using FTOptix.AuditSigning;
-using FTOptix.DataLogger;
-using FTOptix.System;
-using FTOptix.OPCUAServer;
-using FTOptix.EventLogger;
-using FTOptix.RAEtherNetIP;
-using FTOptix.CommunicationDriver;
 #endregion
 
 public class raC_ETHIPTagLogic : BaseNetLogic
@@ -49,37 +32,37 @@ public class raC_ETHIPTagLogic : BaseNetLogic
     public override void Start()
     {
         //Get the Value variable object
-         _ValueVariable = Owner.GetVariable("Value");
+        _ValueVariable = Owner.GetVariable("Value");
         if (_ValueVariable == null)
             throw new CoreConfigurationException("Cant use raC_ETHIPTagCore directly. Please use an inherited type.");
 
         //loop through the owner upwards to get the group and device whete the tag belong to
         IUANode o = Owner;
-        while (o!=null)
+        while (o != null)
         {
-            if(o is raC_ETHIPTagGroupCore)
+            if (o is raC_ETHIPTagGroupCore)
             {
-                if(_myGroup==null)
-                    {
-                        _myGroup = (raC_ETHIPTagGroupCore)o;
+                if (_myGroup == null)
+                {
+                    _myGroup = (raC_ETHIPTagGroupCore)o;
                     //ToDo: How to deal with this?
-                        //_simMode = (_myGroup is raC_ETHIPTagGroupSIM);
-                    }
+                    //_simMode = (_myGroup is raC_ETHIPTagGroupSIM);
+                }
             }
-            if(o is raC_ETHIPDevice)
+            if (o is raC_ETHIPDevice)
             {
-                if(_myDevice==null)
+                if (_myDevice == null)
                     _myDevice = (raC_ETHIPDevice)o;
             }
-            o=o.Owner;
+            o = o.Owner;
         }
         //End of group and device loop
 
         //Error checking
-        if(_myGroup==null)
+        if (_myGroup == null)
             throw new CoreConfigurationException("The Tag must belong to a tag group.");
 
-        if(_myDevice==null && !_simMode)
+        if (_myDevice == null && !_simMode)
             throw new CoreConfigurationException("The Tag must belong to a device.");
     }
 
@@ -90,26 +73,33 @@ public class raC_ETHIPTagLogic : BaseNetLogic
     public void startTag()
     {
         //If configured, read value at start
-        if(Owner.GetVariable("ReadOnStart").Value)
-            ReadValue();
+        if (Owner.GetVariable("ReadOnStart").Value)
+        {
+            DelayedTask t = new DelayedTask(ReadValue, 5000, LogicObject);
+            t.Start();
+        }
         //If configured, write value at start
         if (Owner.GetVariable("WriteOnChange/WriteOnStart").Value)
-            WriteValue();
+        {
+            DelayedTask t = new DelayedTask(WriteValue, 5000, LogicObject);
+            t.Start();
+        }
+
 
         //If configured, subscribe to the value changed event and set the internal flag
         if (Owner.GetVariable("WriteOnChange").Value)
         {
-            _ValueVariable.VariableChange+=Value_VariableChange;
-            _changeSubscribed=true;
+            _ValueVariable.VariableChange += Value_VariableChange;
+            _changeSubscribed = true;
         }
     }
 
     public override void Stop()
     {
         //Clean up event if flag is set
-        if(_changeSubscribed)
+        if (_changeSubscribed)
         {
-            _ValueVariable.VariableChange-=Value_VariableChange;
+            _ValueVariable.VariableChange -= Value_VariableChange;
         }
     }
 
@@ -121,7 +111,7 @@ public class raC_ETHIPTagLogic : BaseNetLogic
     {
         //Prepare the parameter which need to be passed. Parameters allway are type of Object[]
         raC_ETHIPTagCore p = (raC_ETHIPTagCore)Owner;
-        object[] para = new object[] {p.CIPClass,p.CIPInstance,p.CIPAttribute};
+        object[] para = new object[] { p.CIPClass, p.CIPInstance, p.CIPAttribute };
         //Return parameter
         object[] res;
         //Send command to group
@@ -148,13 +138,13 @@ public class raC_ETHIPTagLogic : BaseNetLogic
     /// <param name="e"></param>
     private void Value_VariableChange(object sender, VariableChangeEventArgs e)
     {
-        if(!_pauseEvent)
+        if (!_pauseEvent)
             WriteValue();
-    
-         _pauseEvent=false;
-        
+
+        _pauseEvent = false;
+
     }
-    
+
     /// <summary>
     /// Write a parameter value to the device using the group as executor.
     /// </summary>
@@ -166,9 +156,9 @@ public class raC_ETHIPTagLogic : BaseNetLogic
         //Get own Value as byte[]
         getTagValue(out data);
         //Prepare the parameter which need to be passed. Parameters allway are type of Object[]
-        object[] para = new object[] {p.CIPClass,p.CIPInstance,p.CIPAttribute, data};
+        object[] para = new object[] { p.CIPClass, p.CIPInstance, p.CIPAttribute, data };
         //And send the command to group
-        _myGroup.GetByType<NetLogicObject>().ExecuteMethod("setSingleParameterCIA",para);
+        _myGroup.GetByType<NetLogicObject>().ExecuteMethod("setSingleParameterCIA", para);
     }
 
     /// <summary>
@@ -179,7 +169,7 @@ public class raC_ETHIPTagLogic : BaseNetLogic
     {
         //ToDo: Add quality parameter!!!
         //Based on the type, use the correspondending decoding
-        
+
         int dataStart = 0;
         raC_ETHIPTagCore p = (raC_ETHIPTagCore)Owner;
         p.CIPQuality = Quality;
@@ -243,6 +233,21 @@ public class raC_ETHIPTagLogic : BaseNetLogic
                 int len = DataStream[dataStart];
                 n.Value = System.Text.Encoding.ASCII.GetString(DataStream, dataStart + 1, len);
             }
+            //A short string with just the first byte are length
+            else if (p is raC_ETHIPTagCustom)
+            {
+                raC_ETHIPTagCustom n = (raC_ETHIPTagCustom)p;
+                IUAVariable DataInVar = n.GetVariable("Value");
+                if (DataInVar != null)
+                {
+                    uint dim = DataInVar.ArrayDimensions[0];
+                    byte[] val = new byte[dim];
+                    ((byte[])DataStream).CopyTo(val, 0);
+                    DataInVar.SetValue(val);
+                }
+                else
+                    Log.Error(Owner.BrowseName + ": " + p.GetType().ToString() + " Property 'Value' not found! Create Value as Byte Array.");
+            }
             else
             {
                 Log.Error(Owner.BrowseName + ": " + p.GetType().ToString() + " not yet implementet!");
@@ -259,46 +264,56 @@ public class raC_ETHIPTagLogic : BaseNetLogic
         //Based on the type, use the correspondending convertion
         raC_ETHIPTagCore p = (raC_ETHIPTagCore)Owner;
         Type t = p.GetType();
-        if (p is raC_ETHIPTagBOOL) {
+        if (p is raC_ETHIPTagBOOL)
+        {
             raC_ETHIPTagBOOL n = (raC_ETHIPTagBOOL)p;
-                res = new byte[2];
-                res[0] = n.Value ? (byte)1:(byte)0;
+            //res = new byte[2];
+            //res[0] = n.Value ? (byte)1:(byte)0;
+            res = BitConverter.GetBytes(n.Value);
         }
-        else if (p is raC_ETHIPTagDINT) {
+        else if (p is raC_ETHIPTagDINT)
+        {
             raC_ETHIPTagDINT n = (raC_ETHIPTagDINT)p;
-                res = BitConverter.GetBytes(n.Value);
+            res = BitConverter.GetBytes(n.Value);
         }
-        else if (p is raC_ETHIPTagINT) {
+        else if (p is raC_ETHIPTagINT)
+        {
             raC_ETHIPTagINT n = (raC_ETHIPTagINT)p;
-                res = BitConverter.GetBytes(n.Value);
+            res = BitConverter.GetBytes(n.Value);
         }
-        else if (p is raC_ETHIPTagREAL) {
+        else if (p is raC_ETHIPTagREAL)
+        {
             raC_ETHIPTagREAL n = (raC_ETHIPTagREAL)p;
-                res = BitConverter.GetBytes(n.Value);
+            res = BitConverter.GetBytes(n.Value);
         }
-        else if (p is raC_ETHIPTagUDINT) {
+        else if (p is raC_ETHIPTagUDINT)
+        {
             raC_ETHIPTagUDINT n = (raC_ETHIPTagUDINT)p;
-                res = BitConverter.GetBytes(n.Value);
+            res = BitConverter.GetBytes(n.Value);
         }
-        else if (p is raC_ETHIPTagUINT) {
+        else if (p is raC_ETHIPTagUINT)
+        {
             raC_ETHIPTagUINT n = (raC_ETHIPTagUINT)p;
-                res = BitConverter.GetBytes(n.Value);
+            res = BitConverter.GetBytes(n.Value);
         }
-        else if (p is raC_ETHIPTagSINT) {
+        else if (p is raC_ETHIPTagSINT)
+        {
             raC_ETHIPTagSINT n = (raC_ETHIPTagSINT)p;
-                res = BitConverter.GetBytes(n.Value);
+            res = BitConverter.GetBytes(n.Value);
         }
-        else if (p is raC_ETHIPTagUSINT) {
+        else if (p is raC_ETHIPTagUSINT)
+        {
             raC_ETHIPTagUSINT n = (raC_ETHIPTagUSINT)p;
-                res = BitConverter.GetBytes(n.Value);
+            res = BitConverter.GetBytes(n.Value);
         }
         //A custom string with the first 4 bytes are length
-        else if (p is raC_ETHIPTagSTRING) {
+        else if (p is raC_ETHIPTagSTRING)
+        {
             raC_ETHIPTagSTRING n = (raC_ETHIPTagSTRING)p;
             Int32 len = System.Text.Encoding.ASCII.GetByteCount(n.Value);
-            res = new byte[len+4];
-            Array.Copy(BitConverter.GetBytes(len),res,4);
-            System.Text.Encoding.ASCII.GetBytes(n.Value).CopyTo(res,4); 
+            res = new byte[len + 4];
+            Array.Copy(BitConverter.GetBytes(len), res, 4);
+            System.Text.Encoding.ASCII.GetBytes(n.Value).CopyTo(res, 4);
         }
         //A short string with just the byte is length
         else if (p is raC_ETHIPTagShortSTRING)
@@ -308,7 +323,8 @@ public class raC_ETHIPTagLogic : BaseNetLogic
             res[0] = (byte)n.Value.Length;
             System.Text.Encoding.ASCII.GetBytes(n.Value).CopyTo(res, 1);
         }
-        else {
+        else
+        {
             Log.Error(Owner.BrowseName + ": " + p.GetType().ToString() + " not yet implementet!");
             res = null;
         }

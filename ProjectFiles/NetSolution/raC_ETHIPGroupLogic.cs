@@ -1,30 +1,11 @@
 #region Using directives
 using System;
 using UAManagedCore;
-using OpcUa = UAManagedCore.OpcUa;
-using FTOptix.HMIProject;
-using FTOptix.Retentivity;
-using FTOptix.NativeUI;
 using FTOptix.NetLogic;
-using FTOptix.UI;
-using FTOptix.CoreBase;
-using FTOptix.Core;
-using RATC.ETHIP;
 using System.Timers;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Diagnostics;
-using FTOptix.Store;
-using FTOptix.ODBCStore;
-using FTOptix.SQLiteStore;
-using FTOptix.AuditSigning;
-using FTOptix.DataLogger;
-using FTOptix.System;
-using FTOptix.OPCUAServer;
-using FTOptix.EventLogger;
-using FTOptix.RAEtherNetIP;
-using FTOptix.CommunicationDriver;
-using System.Net;
 #endregion
 
 public class raC_ETHIPGroupLogic : BaseNetLogic
@@ -46,7 +27,7 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
     /// <summary>
     /// The ETHIP Group
     /// </summary>
-    private raC_ETHIPTagGroup  _myGroup;
+    private raC_ETHIPTagGroup _myGroup;
 
     private IUAVariable _RPIVariable;
 
@@ -58,41 +39,41 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
     /// </summary>
     private List<raC_ETHIPTagCore> _knownTags;
     private List<raC_ETHIPCustomMessageCore> _knownServices;
-    
+
     public override void Start()
     {
-         _myGroup = (raC_ETHIPTagGroup)Owner;
+        _myGroup = (raC_ETHIPTagGroup)Owner;
 
         //loop through the owner upwards to get the device whete the tag belong to
         IUANode o = _myGroup.Owner;
 
-        while (o!=null)
+        while (o != null)
         {
-            if(o is raC_ETHIPDevice)
+            if (o is raC_ETHIPDevice)
             {
                 _myDevice = (raC_ETHIPDevice)o;
                 break;
             }
-            o=o.Owner;
+            o = o.Owner;
         }
         //End of device loop
 
         //Error checking
-        if (_myDevice==null)
+        if (_myDevice == null)
             throw new CoreConfigurationException("The Tag Group must belong to a device.");
-        
-        if(_myGroup.Sts_Running)
+
+        if (_myGroup.Sts_Running)
         {
-            Log.Error (Owner.BrowseName + ": " + "Allready running");
+            Log.Error(Owner.BrowseName + ": " + "Allready running");
             return;
         }
 
-        _RPIVariable=_myGroup.GetVariable("CyclicReadEnabled/RPI");
+        _RPIVariable = _myGroup.GetVariable("CyclicReadEnabled/RPI");
         _logStatsVariable = _myDevice.GetVariable("LogStatistics");
         _cyclicReadVariable = _myGroup.GetVariable("CyclicReadEnabled");
 
-//ToDo: Should this be in seperate function to allow runtime updates on config?
-//Be aware that this is also used in manual read/write operations
+        //ToDo: Should this be in seperate function to allow runtime updates on config?
+        //Be aware that this is also used in manual read/write operations
         _knownTags = new List<raC_ETHIPTagCore>();
         _knownServices = new List<raC_ETHIPCustomMessageCore>();
 
@@ -111,13 +92,14 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
         foreach (var item in root.Children)
         {
             //Only process type TagCommon based objects
-            if(item is raC_ETHIPTagCore)
+            if (item is raC_ETHIPTagCore)
             {
                 //Add tag to lists
                 _knownTags.Add((raC_ETHIPTagCore)item);
                 //Start the Tag to allow "Read/Write at start" functionality
                 ((raC_ETHIPTagCore)item).raC_ETHIPTagLogic.ExecuteMethod("startTag");
-            }else if (item is raC_ETHIPCustomMessageCore)
+            }
+            else if (item is raC_ETHIPCustomMessageCore)
             {
                 //Add tag to lists
                 _knownServices.Add((raC_ETHIPCustomMessageCore)item);
@@ -143,22 +125,22 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
             //Initialice the ETHIP Client
             //_ethipClient = new ETHIPClient();
             //_ethipClient.IPAddress=_myDevice.Path;
-            
+
             //Set timer props. NOt start the timer here, its done later.
             _tmrUpdate = new System.Timers.Timer();
             _tmrUpdate.Interval = _RPIVariable.Value;
             _tmrUpdate.Elapsed += processCyclic;
-            
+
             //Do an initial async read to not block the HMI.
             Task.Run(() => ReadAll(true));
-            
+
             //Set status
             _myGroup.Sts_Running = true;
             Log.Debug(Owner.BrowseName + "Started");
-         }
-        catch(Exception ex)
+        }
+        catch (Exception ex)
         {
-            Log.Error (Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
+            Log.Error(Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
         }
     }
 
@@ -168,12 +150,12 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
     //[FTOptix.NetLogic.ExportMethod]
     public void StopGroup()
     {
-       try
+        try
         {
             Log.Debug("Stopping");
 
             //Stop timer
-            if(_tmrUpdate!=null)
+            if (_tmrUpdate != null)
             {
                 _tmrUpdate.Stop();
                 _tmrUpdate.Elapsed -= processCyclic;
@@ -188,17 +170,17 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
             //     }
             //     catch
             //     {
-                 
+
             //     }
             // }
-            
+
             //Set the status
             _myGroup.Sts_Running = false;
             Log.Debug("Stopped");
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            Log.Error (Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
+            Log.Error(Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
         }
     }
 
@@ -241,7 +223,7 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
     /// </summary>
     /// <param name="startTimer">Start the timer after processing</param>
     private void ReadAll(bool startTimer)
-    {       
+    {
         try
         {
             //TODO: can we use multi service request? Is this supported on all devices?
@@ -249,7 +231,7 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
             //Process every tag one by one
             foreach (var item in _knownTags)
             {
-                if(((raC_ETHIPTagCore)item).CIPClass > 0)
+                if (((raC_ETHIPTagCore)item).CIPClass > 0)
                     getSingleParameter((raC_ETHIPTagCore)item);
             }
             foreach (var item in _knownServices)
@@ -260,11 +242,11 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
         }
         catch (System.Exception ex)
         {
-            Log.Error (Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
+            Log.Error(Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
         }
 
         //Start timer if needed
-        if(startTimer)
+        if (startTimer)
             _tmrUpdate.Start();
     }
 
@@ -316,35 +298,35 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
             //Process each tag one after another
             foreach (var item in _knownTags)
             {
-                if(((raC_ETHIPTagCore)item).CIPClass > 0)
+                if (((raC_ETHIPTagCore)item).CIPClass > 0)
                     setSingleParameter((raC_ETHIPTagCore)item);
             }
-                
+
         }
         catch (System.Exception ex)
         {
-            Log.Error (Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
+            Log.Error(Owner.BrowseName + ": " + ex.Message + Environment.NewLine + ex.StackTrace.ToString());
         }
     }
 
     //The update timer is done
     private void processCyclic(object source, ElapsedEventArgs e)
     {
-        bool restart=false;
+        bool restart = false;
 
-         _tmrUpdate.Stop();
-        
+        _tmrUpdate.Stop();
+
         Stopwatch sw = Stopwatch.StartNew();
         //Should we do a cyclic read?
-        if(_cyclicReadVariable.Value)
-            ReadAll(false); restart=true;
+        if (_cyclicReadVariable.Value)
+            ReadAll(false); restart = true;
 
-        if(_logStatsVariable.Value)
+        if (_logStatsVariable.Value)
             Log.Info("Processed group '" + _myGroup.BrowseName + "' of '" + _myDevice.BrowseName + "' in [ms]: " + sw.ElapsedMilliseconds.ToString());
         //Restart timer?
-        if(restart)
+        if (restart)
         {
-            _tmrUpdate.Interval = _RPIVariable.Value - sw.ElapsedMilliseconds > 1 ? _RPIVariable.Value - sw.ElapsedMilliseconds:1;
+            _tmrUpdate.Interval = _RPIVariable.Value - sw.ElapsedMilliseconds > 1 ? _RPIVariable.Value - sw.ElapsedMilliseconds : 1;
             _tmrUpdate.Start();
         }
     }
@@ -358,11 +340,11 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
         byte[] res;
         //Call the underlying function
         try
-        { 
-            getSingleParameterCIA(p.CIPClass,p.CIPInstance,p.CIPAttribute, out res);
+        {
+            getSingleParameterCIA(p.CIPClass, p.CIPInstance, p.CIPAttribute, out res);
             //send the command for updating the value to the tag.
 
-            ((raC_ETHIPTagCore)p).raC_ETHIPTagLogic.ExecuteMethod("setTagValue",new object[] {res, 0});
+            ((raC_ETHIPTagCore)p).raC_ETHIPTagLogic.ExecuteMethod("setTagValue", new object[] { res, 0 });
         }
         catch (Exception ex)
         {
@@ -379,9 +361,9 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
     {
         object[] res;
         //Send the command to the tag to get the actual value as byte[]
-        ((raC_ETHIPTagCore)p).raC_ETHIPTagLogic.ExecuteMethod("getTagValue",new object[0],out res);
+        ((raC_ETHIPTagCore)p).raC_ETHIPTagLogic.ExecuteMethod("getTagValue", new object[0], out res);
         //Call the underlying function
-        setSingleParameterCIA(p.CIPClass,p.CIPInstance,p.CIPAttribute, (byte[])res[0]);
+        setSingleParameterCIA(p.CIPClass, p.CIPInstance, p.CIPAttribute, (byte[])res[0]);
     }
 
     /// <summary>
@@ -403,11 +385,11 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
         // }
 
         //res = _ethipClient.GetAttributeSingle(Class,Instance,Attribute);
-        object[] paraSend = new object[] {Class,Instance,Attribute};
+        object[] paraSend = new object[] { Class, Instance, Attribute };
         object[] paraRecieved;
-        _myDevice.raC_ETHIPDeviceLogic.ExecuteMethod("getSingleParameterCIA",paraSend,out paraRecieved);
-        res = (byte[])paraRecieved[0];   
-        
+        _myDevice.raC_ETHIPDeviceLogic.ExecuteMethod("getSingleParameterCIA", paraSend, out paraRecieved);
+        res = (byte[])paraRecieved[0];
+
         // if(cleanup)
         // {
         //     _ethipClient.UnRegisterSession();
@@ -434,14 +416,14 @@ public class raC_ETHIPGroupLogic : BaseNetLogic
         // }
 
         //_ethipClient.SetAttributeSingle(Class,Instance,Attribute,data);    
-        object[] paraSend = new object[] {Class,Instance,Attribute,data};
-        _myDevice.raC_ETHIPDeviceLogic.ExecuteMethod("setSingleParameterCIA",paraSend);
-        
+        object[] paraSend = new object[] { Class, Instance, Attribute, data };
+        _myDevice.raC_ETHIPDeviceLogic.ExecuteMethod("setSingleParameterCIA", paraSend);
+
         // if(cleanup)
         // {
         //     _ethipClient.UnRegisterSession();
         //     _ethipClient=null;
         // }
     }
-    
+
 }

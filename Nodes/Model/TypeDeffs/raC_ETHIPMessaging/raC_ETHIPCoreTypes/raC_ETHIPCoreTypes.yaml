@@ -10,18 +10,15 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"The Group is executing its periodic task."}
-    Value: false
   - Name: CyclicReadEnabled
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Enables the cyclic reading of the tag group. The cyclic task is not starting automatically."}
-    Value: false
     Children:
     - Name: AutoStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Set to true to enable the automatic start of the group."}
-      Value: false
     - Name: RPI
       Type: AnalogItemType
       DataType: Int32
@@ -61,12 +58,10 @@ Children:
           Type: BaseVariableType
           DataType: LocalizedText
           ReferenceType: HasProperty
-          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
         - Name: Description
           Type: BaseVariableType
           DataType: LocalizedText
           ReferenceType: HasProperty
-          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
 - Name: raC_ETHIPTagCore
   Id: g=c2c5dc318d47f257b76a7dd86ecafe92
   Supertype: BaseObjectType
@@ -76,17 +71,14 @@ Children:
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Class to be processed."}
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: ParameterName
     Type: BaseDataVariableType
     DataType: LocalizedText
@@ -110,23 +102,19 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Executes a Single Parameter Write Service on Value change."}
-    Value: false
     Children:
     - Name: WriteOnStart
       Type: BaseDataVariableType
       DataType: Boolean
       Description: {"LocaleId":"en-US","Text":"Write the current value to the device after startup."}
-      Value: false
   - Name: CIPQuality
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"Quality of the value. 0: good"}
-    Value: 0
   - Name: ReadOnStart
     Type: BaseDataVariableType
     DataType: Boolean
     Description: {"LocaleId":"en-US","Text":"Reads the value of the Parameter one time at project start."}
-    Value: false
 - Name: raC_ETHIPCustomMessageCore
   Id: g=88246f319cb3e240f1285bfa5e8792df
   Supertype: BaseObjectType
@@ -136,22 +124,18 @@ Children:
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Class to be processed."}
-    Value: 0
   - Name: CIPInstance
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Instance to be processed."}
-    Value: 0
   - Name: CIPAttribute
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Attribute to be processed."}
-    Value: 0
   - Name: CIPService
     Type: BaseDataVariableType
     DataType: Int32
     Description: {"LocaleId":"en-US","Text":"CIP Service to be processed."}
-    Value: 0
   - Name: raC_ETHIPCustomMessageLogic
     Type: NetLogic
     Children:
